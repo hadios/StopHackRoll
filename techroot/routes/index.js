@@ -257,6 +257,82 @@ router.get('/marketHome', function(req, res) {
   });
 });
 
+router.get('/marketDetail/:id', function(req, res) {
+  var id = req.params['id'];
+  console.log("Project ID: " + req.params['id']);
+
+  Product.findById(id, function(err, foundProduct){
+    if (err) {
+      console.log("Unable to find product! Error: " + err);
+      res.render('market-home', {
+        user: req.user
+      });
+      return;
+    } else if (foundProduct == null) {
+      console.log("No such product found!");
+      res.render('market-home', {
+        user: req.user
+      });
+      return;
+    }
+
+    // Randomise the related project page
+    var random = Math.floor(Math.random() * 5);
+
+    Product.find({}).skip(random).limit(5).exec(function(err, relatedProducts){
+      if (err) {
+        console.log("Unable to find related projects!");
+        res.render('market-detail', {
+          user: req.user,
+          product: foundProduct,
+          relatedProducts: relatedProducts
+        });
+        return;
+      }
+
+      console.log("Pass!");
+
+      res.render('market-detail', {
+        user: req.user,
+        product: foundProduct,
+        relatedProducts: relatedProducts
+      });
+    });
+  });
+});
+
+router.get('/productCreation', function(req, res) {
+  res.render('product-creation', {
+    user: req.user
+  });
+});
+
+router.post('/productCreation', function(req, res) {
+    console.log("Body: ");
+    console.log(req.body);
+
+    var newProduct = new Product({
+      name: req.body.name,
+      description: req.body.description,
+      details: req.body.details,
+      price: req.body.price,
+      rating: req.body.rating,
+      numberOfReviews: req.body.numberOfReviews,
+      category: ""
+    });
+
+    newProduct.save(function(err) {
+      if (err) {
+        res.render('product-creation', {
+          user: req.user
+        });
+        return;
+      }
+
+      res.redirect('/marketDetail/' + newProduct._id);
+    });
+});
+
 
 /*
 // Debugging

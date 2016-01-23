@@ -28,34 +28,61 @@
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="logo" href="#"><img src="/public/images/TechRoot_png.png" ></img></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="logo" href="/"><img class="logo" src="/images/TechRoot_png.png" ></img></a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="/marketHome">Market place</a>
+                </li>
+                <% if (user) { %>
+                <li>
+                  <a href="/productCreation">Add product</a>
+                </li>
+                <% } %>
+                <li>
+                  <a href="/projectHome">Projects</a>
+                </li>
+              </ul>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if (user) { %>
+                      <li>
+                          <p class="navbar-text">Signed in as <%= user.username%></p>
+                      </li>
+                      <li>
+                          <a href="/logout">Logout</a>
+                      </li>
+                    <% } else { %>
+                      <li>
+                          <a href="/login">Login</a>
+                      </li>
+                      <li>
+                          <a href="/register">Register</a>
+                      </li>
+                    <% } %>
+                  </ul>
+                </div>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
 
     <!-- Page Content -->
     <div class="container">
@@ -66,24 +93,27 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="http://placehold.it/800x300" alt="">
                     <div class="caption-full">
-                        <h4 class="pull-right">$69.99</h4>
-                        <h4><a href="#">ModderCase 10 GPU Bracket</a>
+                        <h4 class="pull-right">$<%= product.price %></h4>
+
+                        <h4><a href=""><%= product.name %></a>
                         </h4>
-                        <p>Is your graphic card dropping because of the heavy weight? GPU Bracket is here to help you. With 3 level bracket system, it is able to suppose the most intense rig with 3-way GPU</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum felis molestie eros lacinia dignissim. Quisque nec mi arcu</p>
+                        <p><%= product.details %></p>
+                        <h4 class="pull-right"><small>Status: </small>available</h4>
                     </div>
                     <div class="add2cart">
                       <button class="btn btn-success">Add to Cart</button>
                     </div>
                     <div class="ratings">
-                        <p class="pull-right">3 reviews</p>
+                        <p class="pull-right"><%= product.numberOfReviews %> reviews</p>
                         <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
+                          <% for (var j = 0; j < 5; j++) { %>
+                            <% if (j < product.rating) { %>
+                              <span class="glyphicon glyphicon-star"></span>
+                            <% } else { %>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            <% } %>
+                          <% } %>
+                            <%= product.rating %>.0 stars
                         </p>
                     </div>
                 </div>
@@ -156,7 +186,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Techroot 2016</p>
                 </div>
             </div>
         </footer>

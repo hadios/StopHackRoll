@@ -45,10 +45,15 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li>
-                    <a href="/projectHome">Projects</a>
-                </li>
-                <li>
                   <a href="/marketHome">Market place</a>
+                </li>
+                <% if (user) { %>
+                <li>
+                  <a href="/productCreation">Add product</a>
+                </li>
+                <% } %>
+                <li>
+                    <a href="/projectHome">Projects</a>
                 </li>
               </ul>
 
@@ -112,8 +117,7 @@
                   <img src="http://placehold.it/320x150" alt="">
                   <div class="caption">
                     <h4 class="pull-right">$<%= products[i].price %></h4>
-                    <h4><a href="#"><%= products[i].name %></a>
-                                  </h4>
+                    <h4><a href="/marketDetail/<%= products[i]._id%>"><%= products[i].name %></a></h4>
                     <p>
                       <%= products[i].description %>
                     </p>
@@ -122,13 +126,13 @@
                     <p class="pull-right">
                       <%= products[i].numberOfReviews %> reviews</p>
                     <p>
-                      <% for (var j = 0; j < products[i].rating; j++) { %>
+                      <% for (var j = 0; j < 5; j++) { %>
                         <% if (j < products[i].rating) { %>
                           <span class="glyphicon glyphicon-star"></span>
                           <% } else { %>
                             <span class="glyphicon glyphicon-star-empty"></span>
-                            <% } %>
-                              <% } %>
+                          <% } %>
+                      <% } %>
                     </p>
                   </div>
                 </div>

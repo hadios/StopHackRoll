@@ -5,9 +5,10 @@ var Schema = mongoose.Schema;
 var productSchema = new Schema({
   name: String,
   description: String,
+  details: String,
   price: Number,
   rating: { type: Number, default: 0 },
-  numberOfReviews: Number,
+  numberOfReviews: { type: Number, default: 0 },
   category: ""
 });
 
