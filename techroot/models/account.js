@@ -5,7 +5,11 @@ var passportLocalMongoose = require('passport-local-mongoose');
 // create a schema
 var accountSchema = new Schema({
   username: { type: String, required: true, unique: true },
-  password: { type: String }
+  password: { type: String },
+  projectSupport: [{
+    projectId: String,
+    amount: Number
+  }]
 });
 
 accountSchema.plugin(passportLocalMongoose);

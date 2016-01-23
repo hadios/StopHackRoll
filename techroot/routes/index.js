@@ -102,7 +102,19 @@ router.get('/projectDetail/:id', function(req, res) {
       });
       return;
     }
-    console.log("Project found!");
+
+    // Loop through the user projects to see if there is user fund this project
+    var fundingAmount = 0;
+    console.log(req.user);
+    if (req.user) {
+      var projectSupport = req.user.projectSupport;
+      for (var i = 0; i < projectSupport.length; i++) {
+        if (String(projectSupport[i].projectId) === String(id)) {
+          fundingAmount = projectSupport[i].amount;
+          break;
+        }
+      }
+    }
 
     // Randomise the related project page
     var random = Math.floor(Math.random() * 5);
@@ -110,19 +122,116 @@ router.get('/projectDetail/:id', function(req, res) {
     ProjectInfo.find({}).skip(random).limit(5).exec(function(err, relatedProjects){
       if (err) {
         console.log("Unable to find related projects!");
-        res.render('project-home', {
+        res.render('project-detail', {
+          user: req.user,
+          project: foundProject,
+          relatedProjects: relatedProjects,
+          fundingAmount: fundingAmount
+        });
+        return;
+      }
+
+      console.log("Pass!");
+
+      res.render('project-detail', {
+        user: req.user,
+        project: foundProject,
+        relatedProjects: relatedProjects,
+        fundingAmount: fundingAmount
+      });
+    });
+  });
+});
+
+router.post('/fundProject/:id', function(req, res) {
+  var id = req.params['id'];
+  console.log("Project ID: " + req.params['id']);
+
+  console.log("Body: ");
+  console.log(req.body);
+  console.log(req.user);
+
+  ProjectInfo.findById(id, function(err, foundProject){
+    if (err) {
+      console.log("Unable to find project! Error: " + err);
+      res.render('project-home', {
+        user: req.user
+      });
+      return;
+    } else if (foundProject == null) {
+      console.log("No such project found!");
+      res.render('project-home', {
+        user: req.user
+      });
+      return;
+    }
+
+    foundProject.currentFunds += parseInt(req.body.amount);
+    foundProject.save(function(err, savedProject) {
+
+      Account.findById(req.user._id, function(err, foundAccount){
+        if (err) {
+          console.log("Unable to find user! Error: " + err);
+        } else {
+          var found = false;
+          for (var i = 0; i < foundAccount.projectSupport.length; i++) {
+            if (String(foundAccount.projectSupport[i].projectId) === String(savedProject._id)) {
+              foundAccount.projectSupport[i].amount += parseInt(req.body.amount);
+              found = true;
+              break;
+            }
+          }
+
+          if (!found) {
+            foundAccount.projectSupport.push({
+              projectId: savedProject._id,
+              amount: parseInt(req.body.amount)
+            });
+          }
+
+          foundAccount.save(function(err, savedAccount) {
+            if (err) {
+              console.log("Unable to save account! Error: " + err);
+            }
+
+            res.redirect('/projectDetail/' + savedProject._id);
+          });
+        }
+      });
+    })
+  });
+});
+
+router.get('/projectCreation', function(req, res) {
+    res.render('project-creation', {
+      user: req.user
+    });
+});
+
+router.post('/projectCreation', function(req, res) {
+    console.log("Body: ");
+    console.log(req.body);
+
+    var newProject = new ProjectInfo({
+      projectName: req.body.projectName,
+      targetFunds: req.body.targetFunds,
+      timeleft: req.body.timeleft,
+      description: req.body.description,
+      details: req.body.details
+    });
+
+    newProject.save(function(err) {
+      if (err) {
+        res.render('project-creation', {
           user: req.user
         });
         return;
       }
 
-      res.render('project-detail', {
-        user: req.user,
-        project: foundProject,
-        relatedProjects: relatedProjects
-      });
+      console.log("Redirecting!");
+
+      res.redirect('/projectDetail/' + newProject._id);
     });
-  });
 });
 
 

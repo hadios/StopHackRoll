@@ -9,7 +9,10 @@ var projectInfoSchema = new Schema({
   numberOfBackers: { type: Number, default: 0 },
   timeleft: Number,
   description: String,
-  details: String
+  details: String,
+  perkName: String,
+  perkCost: Number,
+  perkDescription: String
 });
 
 var ProjectInfo = mongoose.model('ProjectInfo', projectInfoSchema);

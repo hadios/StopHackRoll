@@ -1,6 +1,10 @@
-projectName, targetFunds, currentFunds, numberOfBackers, timeleft, description, details
-Rocket Scratch, 1200, 320, 32, 11, Building rocket from scratch, Creating an atmospheric vehicles using cheap materials
-Ninja soccer shuriken, 540, 60, 5, 3, Throwing stars, Start scoring goals like a ninja!
-Soda melting cans, 5500, 120, 2, 32, Melting soda, Melt your favourite sodas in seconds
-Thunder tins, 400, 320, 45, 3, Create thunder effects, Get this tins to create your own thunder sounds
-Plant energy, 2300, 300, 23, 45, Nutrients for plants, Use this bio-friendly soil for your plants
+projectName,targetFunds,currentFunds,numberOfBackers,timeleft,description,details
+Virtual Class Rooms,10000,4000,50,19,Virtual Classroom for Primary School,Making the Primary School Classroom Virtual for Students to study from home
+Bluetooth Home Automation,30000,32000,77,9,Setting up bluetooth speakers for paralysed elderly and caregivers,Caregivers can take better care of elderly with bluetooth speaker to hear the sounds from the paralysed elderly room in case of any emergency
+Hand Motion Controlled Robotic Vehicle,40000,37000,20,20,Setting a Hand Motion for a Robotic Vehicle,Robotic Vehicle with Hand Motion to be able to better handle the vehicle with more automation
+Fingerprint Based Exam Hall Authentication,10000,12000,60,2,Using Fingerprint for Exam Hall Authentication ,"Instead of checking every student admin card, with fingerprint authentication, it is easier to check the attendance of students during their examinations."
+Home Appliance Control Using Android Application Project,6000,12000,80,0,Home Appliance Control using Android,"Android controlling Home Appliances such as Iron, Fan, Aircon"
+IOT Garbage Monitoring System,6000,7000,22,0,Monitoring the level of the garbage in the bin,Garbage Van to collect garbage from full garbage bags on roads which will be notified through the application
+Heart Attack Detection By Heart Beat Sensing,6000,7000,19,8,Heart Attack detected by constant monitoring,Monitoring the heart beat level and making sure that there is no heart attack going to occur
+Patient Health Check Using Wireless Health Monitor,7000,6000,17,8,Health Check using Wireless Health Monitor,People can check their health while being at home using the Wireless Health Monitor
+Postage Stamp Value Calculator,2000,900,4,30,Calculating Value of Stamp,The Stamp Calculator allows users to calculate the value of their stamp for their parcel.
