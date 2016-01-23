@@ -20,7 +20,7 @@ footer {
 }
 
 .projectProgress {
-  height: 350px;
+  height: 300px;
   background-color: #DCDCDC;
 }
 
@@ -35,21 +35,30 @@ footer {
 
 /*big-picture*/
 #bpBody {
-	margin-top: 50px;
+  padding-top: 51px;
 	margin-bottom: 50px;
 	background: none;
 }
 
-.full {
+/*.full {
   background: url(http://placehold.it/1920x1080) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 
-.landingTitle{
+.landingTitle1{
 	text-align: center;
+  padding-top: 49%;
+  color: #FF0000;
+  font-family: fantasy;
+}
+.landingTitle2{
+	text-align: center;
+  padding-top: 49%;
+  color: #FF0000;
+  font-family: fantasy;
 }
 
 a {
@@ -164,6 +173,18 @@ a {
 
   .tagLine{
     text-align: center;
+  }
+
+  .marketplace {
+    background-image: url("../images/buy1.jpg");
+    background-repeat: no-repeat;
+    height: 550px;
+  }
+
+  .crowdfund {
+    background-image: url("../images/crowdfunding3.jpg");
+    background-repeat: no-repeat;
+    height: 550px;
   }
 
   #newProj {
