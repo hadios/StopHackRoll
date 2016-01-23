@@ -12,10 +12,10 @@
     <title>Bare - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,23 +39,17 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <img src="../public/images/TechRoot_png.png" class="logo"><a class="navbar-brand" href="#"></a></img>
+              <img src="/images/TechRoot_png.png" class="logo"><a class="navbar-brand" href="/"></a></img>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                  <li>
-                      <a href="#">Projects</a>
-                  </li>
-                  <li>
-                      <a href="#">How It Works</a>
-                  </li>
-                  <li>
-                      <a href="#">Sign Up</a>
-                  </li>
-                  <li>
-                      <a href="#">Log In</a>
-                  </li>
+                <li>
+                    <a href="/projectHome">Projects</a>
+                </li>
+                <li>
+                    <a href="#">How It Works</a>
+                </li>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -66,26 +60,33 @@
     <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>A Bootstrap Starter Template</h1>
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
-                <ul class="list-unstyled">
-                    <li>Bootstrap v3.3.6</li>
-                    <li>jQuery v1.11.1</li>
-                </ul>
+      <div class="row">
+        <div class="col-lg-12 lrbox">
+            <div class="col-lg-6 col-lg-offset-2">
+                <div class="login-form">
+                  <form class="form-horizontal" action="/register" method="post">
+                    <label>Username: </label>
+                    <input class="form-control" name="username"/>
+                    <label>Password: </label>
+                    <input class="form-control" name="password" type="password"/>
+                    <div class="loginbtn">
+                      <button class="register" type="submit">Login</button>
+                    </div>
+                  </form>
+                </div>
             </div>
         </div>
-        <!-- /.row -->
+      </div>
+      <!-- /.row -->
 
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="../public/javascripts/jquery.js"></script>
+    <script src="/javascripts/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../public/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
 
 </body>
 

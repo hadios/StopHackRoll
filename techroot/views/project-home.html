@@ -12,10 +12,10 @@
     <title>Project Page</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,23 +39,32 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <img src="../public/images/TechRoot_png.png" class="logo"><a class="navbar-brand" href="#"></a></img>
+              <img src="/images/TechRoot_png.png" class="logo"><a class="navbar-brand" href="/"></a></img>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
+                <li>
+                    <a href="/projectHome">Projects</a>
+                </li>
+                <li>
+                    <a href="#">How It Works</a>
+                </li>
+                <% if (!user) { %>
                   <li>
-                      <a href="#">Projects</a>
+                    <a href="/register">Sign Up</a>
                   </li>
                   <li>
-                      <a href="#">How It Works</a>
+                    <a href="/login">Log In</a>
                   </li>
-                  <li>
-                      <a href="#">Sign Up</a>
-                  </li>
-                  <li>
-                      <a href="#">Log In</a>
-                  </li>
+                  <% } else { %>
+                    <li>
+                      <a><%= user.username %></a>
+                    </li>
+                    <li>
+                      <a href="/logout">Logout</a>
+                    </li>
+                  <% } %>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -95,145 +104,31 @@
         <hr>
         -->
 
-        <!-- Project One -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>Project One</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-        <hr>
-
-        <!-- Project Two -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>Project Two</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Three -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>Project Three</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Four -->
-        <div class="row">
-
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>Project Four</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Five -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>Project Five</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, quo, minima, inventore voluptatum saepe quos nostrum provident ex quisquam hic odio repellendus atque porro distinctio quae id laboriosam facilis dolorum.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Pagination -->
-        <!--
-          Total Project mod 5 and get the number to become the page
-          <div class="row text-center">
-              <div class="col-lg-12">
-                  <ul class="pagination">
-                      <li>
-                          <a href="#">&laquo;</a>
-                      </li>
-                      <li class="active">
-                          <a href="#">1</a>
-                      </li>
-                      <li>
-                          <a href="#">&raquo;</a>
-                      </li>
-                  </ul>
+        <!-- Loop through all the projects -->
+        <% if (projects) { %>
+          <% for (var i = 0; i < projects.length; i++) { %>
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3><%= projects[i].projectName%></h3>
+                    <h4><%= projects[i].description%></h4>
+                    <p><%= projects[i].details%></p>
+                    <a class="btn btn-primary" href="/projectDetail/<%= projects[i]._id %>">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
-        -->
-        <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <hr>
+            <hr>
+          <% } %>
+        <% } else { %>
+          <div class="row">
+              <h4> No projects need funding! </h4>
+          </div>
+          <hr>
+        <% } %>
 
         <!-- Footer -->
         <footer>
@@ -249,10 +144,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="../public/javascripts/jquery.js"></script>
+    <script src="/javascripts/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../public/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
 
 </body>
 

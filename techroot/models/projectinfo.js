@@ -6,8 +6,10 @@ var projectInfoSchema = new Schema({
   projectName: String,
   targetFunds: Number,
   currentFunds: { type: Number, default: 0 },
-  numberOfLikes: { type: Number, default: 0 },
-  descriptioon: String,
+  numberOfBackers: { type: Number, default: 0 },
+  timeleft: Number,
+  description: String,
+  details: String
 });
 
 var ProjectInfo = mongoose.model('ProjectInfo', projectInfoSchema);
