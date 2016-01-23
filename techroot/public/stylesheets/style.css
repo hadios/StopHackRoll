@@ -166,6 +166,17 @@ a {
     text-align: center;
   }
 
+  #newProj {
+    background-color: #DCDCDC;
+    height: 200px;
+  }
+    #npplus {
+      text-align: center;
+      padding: 75px 0px;
+      font-size: 50px;
+      text-decoration: none;
+    }
+
   #bpBanner {
     padding-top: 51px;
   }
