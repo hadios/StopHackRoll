@@ -48,6 +48,9 @@
                     <a href="/projectHome">Projects</a>
                 </li>
                 <li>
+                  <a href="/marketHome">Market place</a>
+                </li>
+                <li>
                     <a href="#">How It Works</a>
                 </li>
                 <% if (!user) { %>
@@ -105,7 +108,7 @@
         -->
 
         <!-- Loop through all the projects -->
-        <% if (projects) { %>
+        <% if (projects && projects.length > 0) { %>
           <% for (var i = 0; i < projects.length; i++) { %>
             <div class="row">
                 <div class="col-md-7">
@@ -125,7 +128,9 @@
           <% } %>
         <% } else { %>
           <div class="row">
+              <div class="col-sm-6 col-sm-offset-5">
               <h4> No projects need funding! </h4>
+            </div>
           </div>
           <hr>
         <% } %>

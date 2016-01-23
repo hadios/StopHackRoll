@@ -3,23 +3,23 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>Portfolio Item - Start Bootstrap Template</title>
+  <title>Portfolio Item - Start Bootstrap Template</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="/stylesheets/style.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="/stylesheets/style.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -30,130 +30,138 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <img src="/images/TechRoot_png.png" class="logo"><a class="navbar-brand" href="/"></a></img>
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li>
-                    <a href="/projectHome">Projects</a>
-                </li>
-                <li>
-                    <a href="#">How It Works</a>
-                </li>
-                <% if (!user) { %>
-                  <li>
-                    <a href="/register">Sign Up</a>
-                  </li>
-                  <li>
-                    <a href="/login">Log In</a>
-                  </li>
-                  <% } else { %>
-                    <li>
-                      <a><%= user.username %></a>
-                    </li>
-                    <li>
-                      <a href="/logout">Logout</a>
-                    </li>
-                  <% } %>
-              </ul>
-          </div>
-          <!-- /.navbar-collapse -->
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img src="/images/TechRoot_png.png" class="logo">
+        <a class="navbar-brand" href="/"></a>
+        </img>
       </div>
-      <!-- /.container -->
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/projectHome">Projects</a>
+          </li>
+          <li>
+            <a href="/marketHome">Market place</a>
+          </li>
+          <li>
+            <a href="#">How It Works</a>
+          </li>
+          <% if (!user) { %>
+            <li>
+              <a href="/register">Sign Up</a>
+            </li>
+            <li>
+              <a href="/login">Log In</a>
+            </li>
+            <% } else { %>
+              <li>
+                <a>
+                  <%= user.username %>
+                </a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+              <% } %>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
   </nav>
 
-    <!-- Page Content -->
-    <div class="container">
+  <!-- Page Content -->
+  <div class="container">
 
-        <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Project Name</h1>
-            </div>
+    <!-- Portfolio Item Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= project.projectName %></h1>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+      <div class="col-md-8">
+        <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+        <div>
+          <!-- Allow user to design their own way of getting their content across -->
         </div>
-        <!-- /.row -->
 
-        <!-- Portfolio Item Row -->
-        <div class="row">
+        <br>
 
-            <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
-                <div>
-                  <!-- Allow user to design their own way of getting their content across -->
-                </div>
+        <h3> Project details </h3>
+        <p> <%= project.details %> </p>
+      </div>
+
+      <div class="col-md-4">
+        <!-- Project Target -->
+        <div class="">
+          <h1>$<%= project.targetFunds %> <small>Goal</small></h1>
+
+          <label>Progress</label>
+          <div class="progress">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%= Math.floor(project.currentFunds/project.targetFunds*100) %>%">
+              <%= Math.floor(project.currentFunds/project.targetFunds*100) %>%
             </div>
+          </div>
 
-            <div class="col-md-4">
-              <!-- Project Target -->
-              <div class="projectProgress">
-                <h1>Amount Gained</h1>
-                <div></div><!--Amount Bar-->
-                <h3>Time Left</h3>
-                <div></div><!--Time Bar-->
-                <h3>Percentage of Goal</h3>
-                <h3>Numbers Of Backer</h3>
-                <button>Back Project</button>
-              </div>
+          <h1><%= project.timeleft %> <small>days left!<small></h1>
+          <h1><%= project.numberOfBackers %> <small>backers<small></h1>
 
-              <!-- Project Perks -->
-              <div class="perkBox">
-                <div class="perkDetail">
-                  <h2>Perk Name</h2>
-                  <h2>Perk Cost</h2>
-                  <p>Perk Description</p>
-                </div>
-              </div>
-              <!-- /Project Perks -->
-
-            </div> <!--End of the left div-->
-
+          <br>
+          <button class="btn btn-success btn-block">Back this project</button>
         </div>
-        <!-- /.row -->
 
-        <!-- Related Projects Row -->
-        <div class="row">
+        <hr>
 
-            <div class="col-lg-12">
-                <h3 class="page-header">Related Projects</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                    <h4>Project Name<h4>
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
+        <!-- Project Perks -->
+        <div class="perkBox">
+          <div class="perkDetail">
+            <h2>Perk Name</h2>
+            <h2>Perk Cost</h2>
+            <p>Perk Description</p>
+          </div>
         </div>
-        <!-- /.row -->
+        <!-- /Project Perks -->
+
+      </div>
+      <!--End of the left div-->
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h3 class="page-header">Related Projects</h3>
+      </div>
+
+      <% if (relatedProjects && relatedProjects.length > 0) { %>
+        <% for (var i = 0; i < 4; i++) { %>
+          <div class="col-sm-3 col-xs-6">
+            <a href="#">
+              <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
+              <h4><%= relatedProjects[i].projectName %><h4>
+            </a>
+          </div>
+        <% } %>
+      <% } else { %>
+          <h1> No projects </h1>
+      <% } %>
+    </div>
 
         <hr>
 
@@ -167,7 +175,6 @@
             <!-- /.row -->
         </footer>
 
-    </div>
     <!-- /.container -->
 
     <!-- jQuery -->

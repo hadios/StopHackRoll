@@ -2,8 +2,9 @@ var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
-var Account = require('../models/account');
+var Account     = require('../models/account');
 var ProjectInfo = require('../models/projectinfo');
+var Product     = require('../models/product');
 
 var router = express.Router();
 
@@ -103,9 +104,23 @@ router.get('/projectDetail/:id', function(req, res) {
     }
     console.log("Project found!");
 
-    res.render('project-detail', {
-      user: req.user,
-      project: foundProject
+    // Randomise the related project page
+    var random = Math.floor(Math.random() * 5);
+
+    ProjectInfo.find({}).skip(random).limit(5).exec(function(err, relatedProjects){
+      if (err) {
+        console.log("Unable to find related projects!");
+        res.render('project-home', {
+          user: req.user
+        });
+        return;
+      }
+
+      res.render('project-detail', {
+        user: req.user,
+        project: foundProject,
+        relatedProjects: relatedProjects
+      });
     });
   });
 });
@@ -115,8 +130,21 @@ router.get('/projectDetail/:id', function(req, res) {
 // Market
 */
 router.get('/marketHome', function(req, res) {
-  res.render('market-home', {
-    user: req.user
+  console.log("FOUND!");
+
+  Product.find({}, function(err, foundProducts) {
+    if (err) {
+      console.log("Encountered error finding product. Error: " + err);
+      res.render('market-home', {
+        user: req.user,
+      });
+      return;
+    }
+
+    res.render('market-home', {
+      user: req.user,
+      products: foundProducts
+    });
   });
 });
 
@@ -131,9 +159,12 @@ router.get('/ping', function(req, res) {
 router.get('/debug', function(req, res) {
   Account.find({}, function(err, foundAccounts) {
     ProjectInfo.find({}, function(err, foundProjectInfo) {
-      res.render('debug.ejs', {
-        accounts: foundAccounts,
-        projects: foundProjectInfo
+      Product.find({}, function(err, foundProduct){
+        res.render('debug.ejs', {
+          accounts: foundAccounts,
+          projects: foundProjectInfo,
+          products: foundProduct
+        });
       });
     });
   });
@@ -141,17 +172,19 @@ router.get('/debug', function(req, res) {
 
 router.get('/deleteAll', function(req, res) {
   Account.remove({}, function(err) {
-    res.render('debug.ejs', {
-      accounts: null
-    });
+    res.redirect('/debug');
   });
 });
 
 router.get('/deleteAllProjects', function(req, res) {
   ProjectInfo.remove({}, function(err) {
-    res.render('debug.ejs', {
-      accounts: null
-    });
+    res.redirect('/debug');
+  });
+});
+
+router.get('/deleteAllProducts', function(req, res) {
+  Product.remove({}, function(err) {
+    res.redirect('/debug');
   });
 });
 
