@@ -3,42 +3,6 @@ Main Style
 Combination from other css
 */
 
-/*Extra Style*/
-
-.logo {
-  height: 50px;
-  width: 100px;
-  padding: 10px 0px;
-}
-
-.login-form{
-    	padding: 21px 98px;
-    }
-    .input-text{
-    	padding: 4px;
-    	border-width: 1px;
-    	width: 100%;
-    }
-    .lrbox{
-    	padding-top: 100px;
-      padding-left: 100px;
-    }
-    .register{
-    	padding: 10px 35px;
-    	color: white;
-    	background-color: black;
-    	border: 1px solid transparent;
-    }
-    .register:hover, .register:focus {
-    	color: white;
-	}
-	.registerBox{
-		padding: 40px;
-	}
-	.loginbtn{
-		padding-top: 20px;
-		padding-left: 238px;
-	}
 
 /*1-col portfolio*/
 body {
@@ -90,12 +54,13 @@ footer {
 
 a {
 	text-decoration: none;
-	color: #00B7FF;
+	color: #000000;
 }
 
 /*shop-homepage*/
 .slide-image {
     width: 100%;
+    height: 500px;
 }
 
 .carousel-holder {
@@ -134,3 +99,84 @@ a {
     padding: 9px;
     color: #333;
 }
+
+/*Shop Items*/
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+/*Extra Style*/
+
+.logo {
+  height: 50px;
+  width: 100px;
+  padding: 10px 0px;
+}
+
+.login-form{
+    	padding: 21px 98px;
+    }
+    .input-text{
+    	padding: 4px;
+    	border-width: 1px;
+    	width: 100%;
+    }
+    .lrbox{
+    	padding-top: 100px;
+      padding-left: 100px;
+    }
+    .register{
+    	padding: 10px 35px;
+    	color: white;
+    	background-color: black;
+    	border: 1px solid transparent;
+    }
+    .register:hover, .register:focus {
+    	color: white;
+	}
+	.registerBox{
+		padding: 40px;
+	}
+	.loginbtn{
+		padding-top: 20px;
+		padding-left: 238px;
+	}
+
+  .add2cart {
+    padding-left: 20px;
+    padding-bottom: 10px
+  }
+
+  .tagLine{
+    text-align: center;
+  }
+
+  #newProj {
+    background-color: #DCDCDC;
+    height: 200px;
+  }
+    #npplus {
+      text-align: center;
+      padding: 75px 0px;
+      font-size: 50px;
+      text-decoration: none;
+    }
+
+  #bpBanner {
+    padding-top: 51px;
+  }
