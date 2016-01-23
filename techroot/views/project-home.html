@@ -50,24 +50,28 @@
                 <li>
                   <a href="/marketHome">Market place</a>
                 </li>
-                <li>
-                    <a href="#">How It Works</a>
-                </li>
-                <% if (!user) { %>
-                  <li>
-                    <a href="/register">Sign Up</a>
-                  </li>
-                  <li>
-                    <a href="/login">Log In</a>
-                  </li>
-                  <% } else { %>
-                    <li>
-                      <a><%= user.username %></a>
-                    </li>
-                    <li>
-                      <a href="/logout">Logout</a>
-                    </li>
-                  <% } %>
+              </ul>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if (user) { %>
+                      <li>
+                          <p class="navbar-text">Signed in as <%= user.username%></p>
+                      </li>
+                      <li>
+                          <a href="/logout">Logout</a>
+                      </li>
+                    <% } else { %>
+                      <li>
+                          <a href="/login">Login</a>
+                      </li>
+                      <li>
+                          <a href="/register">Register</a>
+                      </li>
+                    <% } %>
+                  </ul>
+                </div>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
