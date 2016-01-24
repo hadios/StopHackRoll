@@ -9,7 +9,8 @@ var productSchema = new Schema({
   price: Number,
   rating: { type: Number, default: 0 },
   numberOfReviews: { type: Number, default: 0 },
-  category: ""
+  category: String,
+  imageName: String
 });
 
 var Product = mongoose.model('Product', productSchema);

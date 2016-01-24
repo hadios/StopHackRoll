@@ -91,12 +91,14 @@
 
             <div class="col-md-12">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/800x300" alt="">
+                    <img class="img-responsive" src="/images/<%= product.imageName %>" width=800 height=300 alt="">
                     <div class="caption-full">
                         <h4 class="pull-right">$<%= product.price %></h4>
 
                         <h4><a href=""><%= product.name %></a>
                         </h4>
+                        <h6><i><a href=""><%= product.description %></a>
+                        </i></h6>
                         <p><%= product.details %></p>
                         <h4 class="pull-right"><small>Status: </small>available</h4>
                     </div>
@@ -195,10 +197,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/javascripts/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
 
 </body>
 
