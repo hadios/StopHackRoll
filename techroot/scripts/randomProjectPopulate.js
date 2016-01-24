@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/techroot');
 
 
 // GLOBAL variables
-var FILE_TO_READ = "projectlist.csv";
+var FILE_TO_READ = "./projectlist.csv";
 
 // Add in projects one by one
 
@@ -26,7 +26,7 @@ for (var i = 0; i < 10; i++) {
 
 var Converter = require("csvtojson").Converter;
 var converter = new Converter({});
-converter.fromFile("./projectlist.csv",function(err,result){
+converter.fromFile(FILE_TO_READ,function(err,result){
   console.log("Result: ");
   console.log(result);
 
@@ -43,7 +43,8 @@ converter.fromFile("./projectlist.csv",function(err,result){
       numberOfBackers: item.numberOfBackers,
       timeleft: item.timeleft,
       description: item.description,
-      details: item.details
+      details: item.details,
+      imageName: item.imageName
     });
 
     currentProject.save(function(err, savedProject) {

@@ -12,7 +12,8 @@ var projectInfoSchema = new Schema({
   details: String,
   perkName: String,
   perkCost: Number,
-  perkDescription: String
+  perkDescription: String,
+  imageName: String
 });
 
 var ProjectInfo = mongoose.model('ProjectInfo', projectInfoSchema);
