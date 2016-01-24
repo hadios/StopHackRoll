@@ -91,7 +91,7 @@
   <!-- Page Content -->
   <div class="container">
 
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="jumbotron">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -103,21 +103,22 @@
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="/images/tb_eco_thin.jpg" alt="Chania">
-        </div>
+        <% if (projects && projects.length > 3) { %>
+          <% for (var i = 0; i < 4; i++) { %>
+            <% if (i == 0) { %>
+              <div class="item active">
+            <% } else { %>
+              <div class="item">
+            <% } %>
+                <img src="/images/tb_eco_thin.jpg" alt="Chania">
+                <div class="carousel-caption">
+                  <h3><%= projects[i].projectName %></h3>
+                  <p><%= projects[i].description %></p>
+                </div>
+              </div>
 
-        <div class="item">
-          <img src="/images/tb_eco_thin.jpg" alt="Chania">
-        </div>
-
-        <div class="item">
-          <img src="/images/tb_eco_thin.jpg" alt="Chania">
-        </div>
-
-        <div class="item">
-          <img src="/images/tb_eco_thin.jpg" alt="Chania">
-        </div>
+          <% } %>
+        <% } %>
       </div>
 
       <!-- Left and right controls -->
