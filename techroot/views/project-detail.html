@@ -136,7 +136,7 @@
                <% } %>
             <% } else { %>
               <% if (project.timeleft > 0) { %>
-                 <button type="button" class="btn btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Login to back this project">Back this project</button>
+                 <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Back this project</button>
                <% } else { %>
                  <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal" disabled>Ended!</button>
                <% } %>
@@ -154,17 +154,16 @@
                 </div>
                 <div class="modal-body">
 
-                <h2> Fund this project! </h2>
+                <h2 style="color:red"> Fund this project! </h2>
 
                 <form action="/fundProject/<%= project._id %>" method="POST">
                 <div class="form-group">
-                  <label for="sel1">Amount:</label>
-                  <select class="form-control" id="sel1">
-                    <option >$1</option>
-                    <option >$5</option>
-                    <option >$10</option>
-                    <option >custom</option>
-                  </select>
+                  <label style="font-size:20px">Amount:</label>
+                  <button type="button" class="btn btn-default btn-amount"> $1 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $2 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $5 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $10 </button>
+                  <button type="button" class="btn btn-default btn-amount"> Custom </button>
                 </div>
 
                 <div class="form-group hidden" id="customAmount">
@@ -250,17 +249,29 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/javascripts/bootstrap.min.js"></script>
     <script>
+
     $(function () {
         $("[data-toggle='tooltip']").tooltip();
     });
 
-    $('select').on('change', function() {
-      if (this.value === "custom") {
+    var previousButton = null;
+
+    $('.btn-amount').on('click', function() {
+      console.log("Heelo");
+      console.log(this.innerText);
+      if (this.innerText === "Custom") {
         $("#customAmount").removeClass('hidden');
       } else {
         $("#customAmount").addClass('hidden');
-        $("#amount").val(this.value.substr(1));
+        $("#amount").val(this.innerText.substr(1));
       }
+
+      if (previousButton != null) {
+        previousButton.removeClass('active');
+      }
+
+      $(this).addClass('active');
+      previousButton = $(this);
     });
     </script>
 </body>
