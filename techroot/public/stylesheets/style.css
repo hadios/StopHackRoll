@@ -50,15 +50,15 @@ footer {
 
 .landingTitle1{
 	text-align: center;
-  padding-top: 49%;
   color: #FF0000;
-  font-family: FontAwesome;
+  font-family: 'Lobster Two', cursive;
+  font-size: 70px;
 }
 .landingTitle2{
 	text-align: center;
-  padding-top: 49%;
   color: #FF0000;
-  font-family: FontAwesome;
+  font-family: 'Lobster Two', cursive;
+  font-size: 70px;
 }
 
 a {
@@ -178,14 +178,14 @@ a {
   .marketplace {
     background-image: url("../images/marketplace.jpg");
     background-repeat: no-repeat;
-    background-size: 570px 550px;
+    background-size: 100% 100%;
     height: 550px;
   }
 
   .crowdfund {
     background-image: url("../images/crowdfunding.jpg");
     background-repeat: no-repeat;
-    background-size: 570px 550px;
+    background-size: 100% 100%;
     height: 550px;
   }
 
