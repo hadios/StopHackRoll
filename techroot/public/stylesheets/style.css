@@ -176,13 +176,13 @@ a {
   }
 
   .marketplace {
-    background-image: url("../images/buy1.jpg");
+    background-image: url("../images/marketplace.jpg");
     background-repeat: no-repeat;
     height: 550px;
   }
 
   .crowdfund {
-    background-image: url("../images/crowdfunding3.jpg");
+    background-image: url("../images/crowdfund.jpg");
     background-repeat: no-repeat;
     height: 550px;
   }
