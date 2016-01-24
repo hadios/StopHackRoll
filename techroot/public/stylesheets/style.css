@@ -178,12 +178,14 @@ a {
   .marketplace {
     background-image: url("../images/marketplace.jpg");
     background-repeat: no-repeat;
+    background-size: 570px 550px;
     height: 550px;
   }
 
   .crowdfund {
-    background-image: url("../images/crowdfund.jpg");
+    background-image: url("../images/crowdfunding.jpg");
     background-repeat: no-repeat;
+    background-size: 570px 550px;
     height: 550px;
   }
 
