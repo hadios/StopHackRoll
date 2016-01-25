@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tech Root</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container">
+
+    <%= accounts %>
+    <br>
+    <a class="btn btn-success" href="/deleteAll"> Clear all accounts </a>
+
+    <hr>
+
+    <%= JSON.stringify(projects) %>
+    <br>
+    <a class="btn btn-success" href="/deleteAllProjects"> Clear all projects </a>
+
+    <hr>
+
+    <%= JSON.stringify(products) %>
+    <br>
+    <a class="btn btn-success" href="/deleteAllProducts"> Clear all products </a>
+  </div>
+</body>
+
+<!-- styles -->
+<link href="stylesheets/bootstrap.css" rel="stylesheet">
+<link href="stylesheets/style.css" rel="stylesheet">
+
+</html>

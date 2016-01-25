@@ -1,0 +1,205 @@
+/*
+Main Style
+Combination from other css
+*/
+
+
+/*1-col portfolio*/
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin: 50px 0;
+}
+
+/*portfolio-item*/
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+.projectProgress {
+  height: 300px;
+  background-color: #DCDCDC;
+}
+
+.perkBox {
+  height: 320px;
+}
+
+.perkDetail {
+  padding: 20px;
+  height: 250px;
+}
+
+/*big-picture*/
+#bpBody {
+  padding-top: 51px;
+	margin-bottom: 50px;
+	background: none;
+}
+
+/*.full {
+  background: url(http://placehold.it/1920x1080) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+.landingTitle1{
+	text-align: center;
+  color: #FF0000;
+  font-family: 'Lobster Two', cursive;
+  font-size: 70px;
+}
+.landingTitle2{
+	text-align: center;
+  color: #FF0000;
+  font-family: 'Lobster Two', cursive;
+  font-size: 70px;
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+/*shop-homepage*/
+.slide-image {
+    width: 100%;
+    height: 500px;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+/*Shop Items*/
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+/*Extra Style*/
+
+.logo {
+  height: 50px;
+  width: 100px;
+  padding: 10px 0px;
+}
+
+.login-form{
+    	padding: 21px 98px;
+    }
+    .input-text{
+    	padding: 4px;
+    	border-width: 1px;
+    	width: 100%;
+    }
+    .lrbox{
+    	padding-top: 100px;
+      padding-left: 100px;
+    }
+    .register{
+    	padding: 10px 35px;
+    	color: white;
+    	background-color: black;
+    	border: 1px solid transparent;
+    }
+    .register:hover, .register:focus {
+    	color: white;
+	}
+	.registerBox{
+		padding: 40px;
+	}
+	.loginbtn{
+		padding-top: 20px;
+		padding-left: 238px;
+	}
+
+  .add2cart {
+    padding-left: 20px;
+    padding-bottom: 10px
+  }
+
+  .tagLine{
+    text-align: center;
+  }
+
+  .marketplace {
+    background-image: url("../images/marketplace.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 550px;
+  }
+
+  .crowdfund {
+    background-image: url("../images/crowdfunding.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 550px;
+  }
+
+  #newProj {
+    background-color: #DCDCDC;
+    height: 200px;
+  }
+    #npplus {
+      text-align: center;
+      padding: 75px 0px;
+      font-size: 50px;
+      text-decoration: none;
+    }
+
+  #bpBanner {
+    padding-top: 51px;
+  }

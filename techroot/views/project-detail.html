@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Portfolio Item - Start Bootstrap Template</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/stylesheets/style.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="logo" href="/"><img class="logo" src="/images/TechRoot_png.png" ></img></a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                    <a href="/projectHome">Explore</a>
+                </li>
+                <% if (user) { %>
+                <li>
+                  <a href="/projectCreation">Start a project</a>
+                </li>
+                <% } %>
+                <li>
+                  <a href="/marketHome">Market place</a>
+                </li>
+              </ul>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if (user) { %>
+                      <li>
+                          <p class="navbar-text">Signed in as <%= user.username%></p>
+                      </li>
+                      <li>
+                          <a href="/logout">Logout</a>
+                      </li>
+                    <% } else { %>
+                      <li>
+                          <a href="/login">Login</a>
+                      </li>
+                      <li>
+                          <a href="/register">Register</a>
+                      </li>
+                    <% } %>
+                  </ul>
+                </div>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header"><%= project.projectName %></h1>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+      <div class="col-md-8">
+        <img class="img-responsive" src="/images/<%= project.imageName %>" width=800 height=300 alt="">
+        <div>
+          <!-- Allow user to design their own way of getting their content across -->
+        </div>
+
+        <br>
+
+        <h3> Project details </h3>
+        <p> <%= project.details %> </p>
+      </div>
+
+      <div class="col-md-4">
+        <!-- Project Target -->
+        <div class="">
+          <h1>$<%= project.targetFunds %> <small>Goal</small></h1>
+
+          <label>Progress</label>
+          <div class="progress">
+            <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-placement="top" title="$<%= project.currentFunds %>" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<%= (Math.floor(project.currentFunds/project.targetFunds*100) > 100 ? 100 : Math.floor(project.currentFunds/project.targetFunds*100)) %>%">
+              <%= Math.floor(project.currentFunds/project.targetFunds*100) %>%
+            </div>
+          </div>
+
+          <h1><%= project.timeleft %> <small>days left!<small></h1>
+          <h1><%= project.numberOfBackers %> <small>backers<small></h1>
+
+          <br>
+          <% if (user) { %>
+            <% if (fundingAmount != 0) { %>
+               <h4><small>Funded</small> $<%= fundingAmount%> </h4>
+               <% if (project.timeleft > 0) { %>
+                 <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Help fund more!</button>
+               <% } else { %>
+                 <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal" disabled>Ended!</button>
+               <% } %>
+            <% } else { %>
+              <% if (project.timeleft > 0) { %>
+                 <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Back this project</button>
+               <% } else { %>
+                 <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal" disabled>Ended!</button>
+               <% } %>
+            <% } %>
+
+          <!-- Button trigger modal -->
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><%= project.projectName %></h4>
+                </div>
+                <div class="modal-body">
+
+                <h2 style="color:red"> Fund this project! </h2>
+
+                <form action="/fundProject/<%= project._id %>" method="POST">
+                <div class="form-group">
+                  <label style="font-size:20px">Amount:</label>
+                  <button type="button" class="btn btn-default btn-amount"> $1 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $2 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $5 </button>
+                  <button type="button" class="btn btn-default btn-amount"> $10 </button>
+                  <button type="button" class="btn btn-default btn-amount"> Custom </button>
+                </div>
+
+                <div class="form-group hidden" id="customAmount">
+                  <label for="amount">Custom amount</label>
+                  <input type="number" min="1" class="form-control" name="amount" id="amount" value="1">
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-success">Fund!</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+          <% } else {%>
+            <% if (project.timeleft > 0) { %>
+               <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Back this project</button>
+             <% } else { %>
+               <button class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal" disabled>Ended!</button>
+             <% } %>
+          <% } %>
+
+        </div>
+
+        <hr>
+
+        <!-- Project Perks -->
+        <!-- <div class="perkBox">
+          <div class="perkDetail">
+            <h2>Perk Name</h2>
+            <h2>Perk Cost</h2>
+            <p>Perk Description</p>
+          </div>
+        </div> -->
+        <!-- /Project Perks -->
+
+      </div>
+      <!--End of the left div-->
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h3 class="page-header">Related Projects</h3>
+      </div>
+
+      <% if (relatedProjects && relatedProjects.length > 0) { %>
+        <% for (var i = 0; i < 4; i++) { %>
+          <div class="col-sm-3 col-xs-6">
+            <a href="/projectDetail/<%= relatedProjects[i]._id %>">
+              <img class="img-responsive portfolio-item" src="/images/<%= relatedProjects[i].imageName %>" alt="">
+              <h4><%= relatedProjects[i].projectName %><h4>
+            </a>
+          </div>
+        <% } %>
+      <% } else { %>
+          <h1> No projects </h1>
+      <% } %>
+    </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Techroot 2016</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/javascripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script>
+
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+
+    var previousButton = null;
+
+    $('.btn-amount').on('click', function() {
+      console.log("Heelo");
+      console.log(this.innerText);
+      if (this.innerText === "Custom") {
+        $("#customAmount").removeClass('hidden');
+      } else {
+        $("#customAmount").addClass('hidden');
+        $("#amount").val(this.innerText.substr(1));
+      }
+
+      if (previousButton != null) {
+        previousButton.removeClass('active');
+      }
+
+      $(this).addClass('active');
+      previousButton = $(this);
+    });
+    </script>
+</body>
+
+</html>
